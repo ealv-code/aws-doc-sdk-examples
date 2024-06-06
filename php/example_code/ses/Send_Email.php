@@ -19,7 +19,7 @@
 // snippet-start:[ses.php.send_email.complete]
 // snippet-start:[ses.php.send_email.import]
 
-require 'vendor/autoload.php';
+require '../../../vendor/autoload.php';
 
 use Aws\Ses\SesClient; 
 use Aws\Exception\AwsException;
@@ -30,7 +30,7 @@ use Aws\Exception\AwsException;
 $SesClient = new Aws\Ses\SesClient([
     'profile' => 'default',
     'version' => '2010-12-01',
-    'region' => 'us-east-2'
+    'region' => 'us-east-1'
 ]);
 
 $html_body = '<h1>AWS Amazon Simple Email Service Test Email</h1>' .
@@ -39,10 +39,10 @@ $html_body = '<h1>AWS Amazon Simple Email Service Test Email</h1>' .
     'AWS SDK for PHP</a>.</p>';
 $subject = 'Amazon SES test (AWS SDK for PHP)';
 $plaintext_body = 'This email was send with Amazon SES using the AWS SDK for PHP.';
-$sender_email = 'email_address';
-$recipient_emails = ['email_address'];
+$sender_email = 'info@poboxmexico.com';
+$recipient_emails = ['info@poboxmexico.com'];
 $char_set = 'UTF-8';
-$configuration_set = 'ConfigSet';
+//$configuration_set = 'ConfigSet';
 
 try {
     $result = $SesClient->sendEmail([
@@ -70,7 +70,7 @@ try {
         ],
         // If you aren't using a configuration set, comment or delete the
         // following line
-        'ConfigurationSetName' => $configuration_set,
+        //'ConfigurationSetName' => $configuration_set,
     ]);
     var_dump($result);
 } catch (AwsException $e) {
